@@ -1,8 +1,0 @@
-1. Start with the user Auth page(Login and sign up)
-2. finish the presumed database
-3. 
-
-
-Features
-health summary
-Action center = kinda like a to do list.View items that need your attention

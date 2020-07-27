@@ -95,8 +95,9 @@ def appointments(user_id):
     # patient = Patient.query.filter_by(generated_id=user_id).first()
     # if form.validate_on_submit():
     #     pass
-    image = url_for('static', filename=f'images/doctor.jpg')
-    return render_template('appointments.html', title='Patient Appointments', newform=newform, image=image)
+    image1 = url_for('static', filename=f'images/doctor1.jpg')
+    image2 = url_for('static', filename=f'images/doctor2.jpg')
+    return render_template('appointments.html', title='Patient Appointments', newform=newform, image1=image1, image2=image2)
 
 
 @app.route("/<string:user_id>_account_information", methods=['GET', 'POST'])
@@ -123,9 +124,14 @@ def account(user_id):
 @login_required
 def delete_account():
     patient = Patient.query.filter_by(generated_id=current_user.generated_id).first()
-    db.session.delete(patient)
-    db.session.commit()
-    flash('Account successfully deleted', 'success')
+    for doc in patient.mydoc:
+        if doc.belongsto == current_user.id:
+            db.session.delete(doc)
+            db.session.delete(patient)
+            db.session.commit()
+            flash('Account successfully deleted', 'success')
+        else:
+            pass
     return redirect(url_for('home'))
 
 

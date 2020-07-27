@@ -1,0 +1,19 @@
+make sure to have internet connection throughout the entire process.
+
+How to operate:
+1. Download Python3.8 and install(at begining of installation, add pip to path before actually installing)
+2. Open Project folder where there is 'run.py' and open cmd there by clicking on address bar and typing 'cmd' then press 'Enter'
+3. Type in command 'pip install -r requirements.txt'
+4. Type in command 'set FLASK_APP=run.py'
+5. Type in command 'python run.py'
+6. Open browser and type in address bar '127.0.0.1:5000'
+7. Enjoy
+
+Features:
+1. User authentication using gmail verification
+2. Email Message sending to doctor
+3. Patient Health summary(Hard coded)
+4. Patient option to update account
+5. Patient option to delete account
+6. Doctor's medication(Hard coded)
+7. Patient Appointment(Hard coded, ability to make an appointment is not there.)

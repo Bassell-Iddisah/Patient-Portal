@@ -37,8 +37,24 @@
                     {% endif %}
                 </div>
             </fieldset>
+        <style>
+            .btn-outline-pink {
+              color: #5d4b63;
+              border-color: #5d4b63;
+            }
+
+            .btn-outline-pink:hover {
+              color: #fff;
+              background-color: #5d4b63;
+              border-color: #5d4b63;
+            }
+
+            .btn-outline-primary:focus, .btn-outline-primary.focus {
+              box-shadow: 0 0 0 0.2rem #5d4b63;
+            }
+        </style>
             <div class="form-group">
-                {{ mailform.submit(class='btn btn-outline-primary') }}
+                {{ mailform.submit(class='btn btn-outline-pink') }}
             </div>
         </form>
     </div>
