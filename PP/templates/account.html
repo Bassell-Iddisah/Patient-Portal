@@ -1,0 +1,156 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container w-75 bg-light rounded">
+        <br>
+        <div class="row">
+            <div class="col-md-8 float-left">
+                <form action="", method="post" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <legend class="text-center h2">Update account info</legend>
+
+                    <fieldset>
+                        <div class="form-group w-50 float-left">
+                            {% if form.name.errors %}
+                                {{ form.name(class='form-control-md is-invalid', placeholder="Enter full name") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.name.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.name(class='form-control-md', placeholder="Enter full name") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-right">
+                            {% if form.email.errors %}
+                                {{ form.email(class='form-control-md is-invalid', placeholder="Enter Email Address") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.email.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.email(class='form-control-md', placeholder="Enter Email Address") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-left">
+                            {% if form.phone.errors %}
+                                {{ form.phone(class='form-control-md is-invalid', placeholder="Enter Phone Number") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.phone.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.phone(class='form-control-md', placeholder="Enter Phone Number") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-right">
+                            {% if form.age.errors %}
+                                {{ form.age(class='form-control-md is-invalid', placeholder="Enter Your Age") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.age.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.age(class='form-control-md', placeholder="Enter Your Age") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-left">
+                            {% if form.sex.errors %}
+                                {{ form.sex(class='form-control-md is-invalid', placeholder="Select your gender") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.sex.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.sex(class='form-control-md', placeholder="Select your gender") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-right">
+                            {% if form.image_file.errors %}
+                                {{ form.image_file(class='form-control-md is-invalid') }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.image_file.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.image_file(class='form-control-md') }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-left">
+                            {% if form.password.errors %}
+                                {{ form.password(class='form-control-md is-invalid', placeholder="Enter Prefered Password") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.password.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.password(class='form-control-md', placeholder="Enter Prefered Password") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group w-50 float-right">
+                            {% if form.confirm_password.errors %}
+                                {{ form.confirm_password(class='form-control-md is-invalid', placeholder="Confirm Password") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.confirm_password.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.confirm_password(class='form-control-md', placeholder="Confirm Password") }}
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.submit(class='btn btn-info') }}
+                        </div>
+                        <div class="form-group">
+                            <a class="btn btn-danger" href="{{ url_for('delete_account') }}">Delete Account</a>
+                        </div>
+                    </fieldset>
+                </form>
+
+            </div>
+            <div class="col-md-4 float-right">
+                <div class="jumbotron overflow-hidden">
+                    <img src="{{ image_file }}" alt="Profile Picture" class="w-100 h-auto rounded card-img">
+                    <br>
+                    <hr>
+                    <p>Name: {{ patient.fullname }}</p>
+                    <p>Email Address: {{ patient.email }}</p>
+                    <p>Phone Number: {{ patient.phone }}</p>
+                    <p>Age: {{ patient.age }}</p>
+                    <p>Sex: {{ patient.sex }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

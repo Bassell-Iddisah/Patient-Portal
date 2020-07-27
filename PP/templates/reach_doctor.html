@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container w-50 border-0 m-auto">
+        <form action="", method="post">
+            <legend class="text-center h2">Send your doctor mail</legend>
+            {{ mailform.hidden_tag() }}
+            <fieldset>
+                <div class="form-group">
+                    {{ mailform.subject.label(class='form-control-label') }}
+                    {% if mailform.subject.errors %}
+                        {{ mailform.subject(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ mailform.subject(class='form-control') }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ mailform.msg.label(class='form-control-label') }}
+                    {% if mailform.msg.errors %}
+                        {{ mailform.msg(class='form-control is-invalid') }}
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ mailform.msg(class='form-control') }}
+                    {% endif %}
+                </div>
+            </fieldset>
+            <div class="form-group">
+                {{ mailform.submit(class='btn btn-outline-primary') }}
+            </div>
+        </form>
+    </div>
+{% endblock %}

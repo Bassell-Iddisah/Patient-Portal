@@ -1,0 +1,95 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container w-50 bg-light rounded">
+        <br>
+    <h4 class="text-center">You have 2 upcoming appointments</h4>
+    <div class="row">
+
+        {% for foo in range(2) %}
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 min-vw-5">
+                <div class="card">
+                    <img src="{{ image }}" alt="appointment" class="card-img">
+                    <div class="card-body">
+                        <p class="card-title text-center">Doctor's Name:</p>
+                        <p class="card-text">Date:</p>
+                        <p class="card-text">Time:</p>
+                    </div>
+                </div>
+                <br>
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <br>
+        <div class="card border-dark">
+            <h4 class="btn btn-info border-bottom"><i class=""></i>What's new</h4>
+            {% if something %}
+                {% for i in range(3) %}
+                    <li>something new</li>
+                {% endfor %}
+
+            {% else %}
+                No new information
+            {% endif %}
+
+        </div>
+        <br>
+
+        <div class="card border-dark">
+            <h4 class="btn btn-info border-bottom"><i class=""></i>Upcoming Appointments</h4>
+            {% if appointments %}
+                <table>
+                <tr>
+                    <th>Date of appointment</th>
+                    <th>Appointment with who</th>
+                    <th>Time of Appointment</th>
+                </tr>
+                <tr>
+                    {% for foo in range(3) %}
+                        <td>foo.something</td>
+                    {% endfor %}
+
+                </tr>
+            </table>
+            {% else %}
+                You have 2 upcoming appointments
+            {% endif %}
+
+        </div>
+        <br>
+
+        <div class="card border-dark">
+            <h4 class="btn btn-info border-bottom"><i class=""></i>Last three Appointment</h4>
+            {% if history %}
+                <table class="table table-bordered table-responsive">
+                <tr>
+                    <th>Date of appointment</th>
+                    <th>Appointment with who</th>
+                    <th>Time of Appointment</th>
+                </tr>
+                <tr>
+                    <td>27th May, 2020</td>
+                    <td>Dr. Bassell Iddisah</td>
+                    <td>12:30 GMT</td>
+                </tr>
+                <tr>
+                    <td>12th May, 2020</td>
+                    <td>Dr. Bassell Iddisah</td>
+                    <td>12:30 GMT</td>
+                </tr>
+                <tr>
+                    <td>2nd June, 2020</td>
+                    <td>Dr. Bassell Iddisah</td>
+                    <td>12:30 GMT</td>
+                </tr>
+            </table>
+            {% else %}
+                You have to have at least one appointment to have a history
+            {% endif %}
+
+        </div>
+        <br>
+    </div>
+    </div>
+{% endblock %}

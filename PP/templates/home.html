@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container w-50 bg-light rounded">
+        <section class="row">
+            <div class="col-md-4 float-left border-right mt-3">
+                <img src="{{ profile }}" alt="Profile Picture" class="img-thumbnail">
+            </div>
+            <div class="col-md-8 float-right">
+                <ul class="list-inline">
+                    <li><strong>Name:</strong> {{ current_user.fullname }}</li>
+                    <li><strong>Patient ID:</strong> {{ current_user.generated_id }}</li>
+                    <li><strong>Email Address:</strong> {{ current_user.fullname }}</li>
+                </ul>
+            </div>
+        </section>
+        <hr class="bg-dark">
+
+        <section class="row">
+
+                <div class="col-md-6">
+                    <h4 class="border-bottom border-dark b-">Diagnosis</h4>
+                    <li>Heavy Caugh</li>
+                    <li>Headache</li>
+                    <li>Concuctions</li>
+                </div>
+            <br>
+                <div class="col-md-6">
+                    <h4 class="border-bottom border-dark b-">Medications</h4>
+                    <li>Paracitamole tablet(1 2x daily)</li>
+                    <li>water(10 cups daily)</li>
+                    <li>dairy milk(2 GHs1 satchets daily)</li>
+                </div>
+        </section>
+        <br>
+    </div>
+
+{% endblock %}

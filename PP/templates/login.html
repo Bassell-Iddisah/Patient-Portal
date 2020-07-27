@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container w-50 bg-light" style="border-top:5px darkblue solid;">
+        <form action="" method="post" class=" w-50 mr-auto ml-auto">
+        {{ loginform.hidden_tag() }}
+        <legend class="text-center">Login to view info</legend>
+
+        <fieldset class=" w-50 mr-auto ml-auto">
+
+            <div class="form-group">
+                {% if loginform.generated_id.errors %}
+                    {{ loginform.generated_id(class='form-control-md is-invalid', placeholder="Patient ID:") }}
+                    <div class="invalid-feedback">
+                        {% for error in loginform.generated_id.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ loginform.generated_id(class='form-control-md', placeholder="Patient ID:") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {% if loginform.password.errors %}
+                    {{ loginform.password(class='form-control-md is-invalid', placeholder="Enter Password:") }}
+                    <div class="invalid-feedback">
+                        {% for error in loginform.password.errors %}
+                            <span>
+                                {{ error }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ loginform.password(class='form-control-md', placeholder="Enter Password:") }}
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ loginform.remember() }}
+                {{ loginform.remember.label() }}
+            </div>
+
+            <div class="form-group">
+                {{ loginform.submit(class='btn btn-info') }}
+            </div>
+
+            <small class="text-muted">
+                <a href="{{ url_for('register') }}" class="ml-3">Register on our site</a>,
+            </small>
+
+        </fieldset>
+    </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{#    Set the title#}
+    <title>Patient Portal</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles/styles.css') }}">
+{#    <script src="{{ url_for('static', filename='/js/util.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='/js/util2.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='/js/bootstrap.js') }}"></script>#}
+{#<script src="{{ url_for('static', filename='/js/bootstrap.min.js') }}"></script>#}
+
+</head>
+<body class="" style="background-color:cornflowerblue;">
+
+    {#    ####################################   WORK ON THE ALERT SO IT CLOSES WHEN THE BUTTON IS CLICKED ###################}
+        {% with messages = get_flashed_messages(with_categories=True)  %}
+            {% for categories, message in messages %}
+                <div class="alert alert-{{ categories }} alert-dismissible fade show text-center" role="alert">
+                    <span>
+                        {{ message }}
+                    </span>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            {% endfor %}
+        {% endwith %}
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            {% if current_user.is_authenticated %}
+                <ul class="nav float-right mt-4 mr-4">
+                    <li class="nav-item btn"><a class="nav-link btn btn-primary" href="{{ url_for('login') }}">Change Person</a></li>
+                    <li class="nav-item btn"><a class="nav-link btn btn-danger" href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            {% endif %}
+        </div>
+
+        {% if current_user.is_authenticated %}
+            <ul class="nav m-auto">
+    {#         HERE SHOULD BE A GROUP OF LINKS THAT SHOULD OCCUPY THE SPACE#}
+                <li class="nav-item m-1"><a class="nav-link btn btn-primary" href='{{ url_for('home', user=current_user) }}'>Home</a></li>
+                <li class="nav-item m-1"><a class="nav-link btn btn-primary" href='{{ url_for('medications', id=current_user.generated_id) }}'>Medication</a></li>
+                <li class="nav-item m-1"><a class="nav-link btn btn-primary" href='{{ url_for('send_mail') }}'>Send your doctor mail</a></li>
+                <li class="nav-item m-1"><a class="nav-link btn btn-primary" href='{{ url_for('appointments', user_id=current_user.generated_id) }}'>Appointments</a></li>
+                <li class="nav-item m-1"><a class="nav-link btn btn-primary" href='{{ url_for('account', user_id=current_user.generated_id) }}'>Account</a></li>
+            </ul>
+        {% endif %}
+    </div>
+<br><br>
+
+<div class="h-auto m-auto">
+    {% block content %}{% endblock %}
+</div>
+{#    #}
+
+
+{#<div class="container mr-auto ml-auto ">#}
+{#    {% if current_user.is_authenticated %}#}
+{#        <nav class="container">#}
+{#                <ul class="nav">#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'>Home</a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'>Link</a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'>Link</a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'>Appointments</a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'>Account</a></li>#}
+    {#                <li class="nav-item"><a class="nav-link" href="#">Change Person</a></li>#}
+    {#                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>#}
+{#                </ul>#}
+{#            </nav>#}
+{#    {% else %}#}
+    {#    HERE SHOULD BE A GROUP OF LINKS THAT SHOULD OCCUPY THE SPACE    #}
+{#        <ul class="nav">#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'></a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'></a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'></a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'></a></li>#}
+{#                    <li class="nav-item"><a class="nav-link" href='#'></a></li>#}
+    {#                <li class="nav-item"><a class="nav-link" href="#">Change Person</a></li>#}
+    {#                <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>#}
+{#                </ul>#}
+{##}
+{#    {% endif %}#}
+{#</div>#}
+{#    <footer>#}
+{#    Lorem ipsum dolor sit amet, consectetur adipisicing elit.#}
+{#    Cupiditate dicta eum maxime quae quos saepe sed sunt! Atque aut beatae cum,#}
+{#    dignissimos esse et ex in incidunt, perferendis quod sapiente?#}
+{#    </footer>#}
+</body>
+</html>

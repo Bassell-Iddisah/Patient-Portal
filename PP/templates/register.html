@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container w-50">
+        <form action="" method="post" class="mr-auto ml-auto w-100">
+                {{ registerform.hidden_tag() }}
+
+                <legend class="text-center">Register with us </legend>
+                <fieldset class="jumbotron w-100 mr-auto ml-auto" style="border-top:5px darkblue solid;">
+
+                    <div class="form-group w-50 float-left">
+                        {% if registerform.name.errors %}
+                            {{ registerform.name(class='form-control-md is-invalid', placeholder="Enter full name") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.name.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.name(class='form-control-md', placeholder="Enter full name") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-right">
+                        {% if registerform.email.errors %}
+                            {{ registerform.email(class='form-control-md is-invalid', placeholder="Enter Email Address") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.email.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.email(class='form-control-md', placeholder="Enter Email Address") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-left">
+                        {% if registerform.phone.errors %}
+                            {{ registerform.phone(class='form-control-md is-invalid', placeholder="Enter Phone Number") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.phone.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.phone(class='form-control-md', placeholder="Enter Phone Number") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-right">
+                        {% if registerform.age.errors %}
+                            {{ registerform.age(class='form-control-md is-invalid', placeholder="Enter Your Age") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.age.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.age(class='form-control-md', placeholder="Enter Your Age") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-left">
+                        {% if registerform.sex.errors %}
+                            {{ registerform.sex(class='form-control-md is-invalid', placeholder="Select your gender") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.sex.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.sex(class='form-control-md', placeholder="Select your gender") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-right">
+                            {% if registerform.doc_name.errors %}
+                                {{ registerform.doc_name(class='form-control-md is-invalid', placeholder="Your Doctor's name:") }}
+                                <div class="invalid-feedback">
+                                    {% for error in registerform.doc_name.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ registerform.doc_name(class='form-control-md', placeholder="Your Doctor's name:") }}
+                            {% endif %}
+                        </div>
+
+                    <div class="form-group w-50 float-left">
+                            {% if registerform.doc_mail.errors %}
+                                {{ registerform.doc_mail(class='form-control-md is-invalid', placeholder="Your Doctor's email:") }}
+                                <div class="invalid-feedback">
+                                    {% for error in registerform.doc_mail.errors %}
+                                        <span>
+                                            {{ error }}
+                                        </span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ registerform.doc_mail(class='form-control-md', placeholder="Your Doctor's email:") }}
+                            {% endif %}
+                        </div>
+
+                    <div class="form-group w-50 float-right">
+                        {% if registerform.password.errors %}
+                            {{ registerform.password(class='form-control-md is-invalid', placeholder="Enter Prefered Password") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.password.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.password(class='form-control-md', placeholder="Enter Prefered Password") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group w-50 float-left">
+                        {% if registerform.confirm_password.errors %}
+                            {{ registerform.confirm_password(class='form-control-md is-invalid', placeholder="Confirm Password") }}
+                            <div class="invalid-feedback">
+                                {% for error in registerform.confirm_password.errors %}
+                                    <span>
+                                        {{ error }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ registerform.confirm_password(class='form-control-md', placeholder="Confirm Password") }}
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        {{ registerform.submit(class='btn btn-info') }}
+                    </div>
+                    <small class="text-muted">
+                        <a href="{{ url_for('login') }}" class="ml-3">Already registered</a>,
+                    </small>
+                </fieldset>
+            </form>
+    </div>
+            {############################################## REGISTRATION FORM BEGINS HERE ##############################################}
+{% endblock %}
